@@ -1,0 +1,46 @@
+<div><strong>Comisión de Asuntos Académicos Administrativos</strong></div>
+<div><strong>Consejo Técnico</strong></div>
+<div><strong>UNAM, ENES Juriquilla</strong></div>
+<div><strong>P r e s e n t e</strong></div>
+
+
+<p>
+    El motivo de la presente es informar que he revisado la solicitud de <b>{{profesor.nombre_cepr()}}</b> para ausentarse de sus labores académicas, con base en el Estatuto del Personal Académico de la UNAM vigente, conforme al artículo {{ solicitud.articulo()[0] }} inciso {{ solicitud.articulo()[1] }} y la dictamino como <b>{{ solicitud.respuesta(dictamen.caaa_approve)|upper}}</b>.<br>
+    <br>
+  
+    El período de comisión será de {{solicitud.ctlc_dias}} días, iniciando el {{solicitud.fecha_valida(solicitud.ctlc_periodoinicio)}} y finalizando {{solicitud.fecha_valida(solicitud.ctlc_periodofinal)}}. La comisión de realizará en {{solicitud.ctlc_dependencia}} de {{solicitud.ctlc_institucion}} en {{solicitud.ctlc_estado}}, {{solicitud.ctlc_pais}}.
+
+    {% if solicitud.ctlc_apoyo == True %}
+        {% if solicitud.ctlc_origen_apoyo == "No se requiere apoyo" %}
+            Para realizar dicha comisión no se requiere apoyo económico.
+        {% elif solicitud.ctlc_origen_apoyo == "ENES Juriquilla" %}
+            Para realizar dicha comisión se solicita el apoyo económico de la ENES Juriquilla para solventar los gastos, los cuales ascienden a {{ solicitud.ctlc_catidad_apoyo }} M.N.
+        {% elif solicitud.ctlc_origen_apoyo == "CONACYT" or solicitud.ctlc_origen_apoyo == "PAPIIT" or solicitud.ctlc_origen_apoyo == "PAPIME" %}
+            Para realizar dicha comisión se utilizara apoyo económico de {{solicitud.ctlc_origen_apoyo}} mediante el proyecto {{solicitud.ctlc_numero_proyecto}}, para solventar los gastos de transporte/viáticos, los cuales ascienden a {{ solicitud.ctlc_catidad_apoyo }} M.N.
+        {% else %}
+            Para realizar dicha comisión se utilizaran recursos económicos de {{solicitud.ctlc_origen_apoyo}}, los cuales ascienden a {{ solicitud.ctlc_catidad_apoyo }} M.N.
+        {% endif %}
+    <br>
+    <br>
+    {% endif %}
+</p> 
+
+{% if dictamen.caaa_observaciones %}
+<i>{{ dictamen.caaa_observaciones }}</i><br>
+<br>
+{% endif %}
+
+Sin más de momento, agradezco su atención y le envío un cordial saludo.
+
+<br>
+<br>
+<div><strong>{{revisor.revisor_cedpa()}}</strong></div>
+<div><strong>Comisión de Asuntos Académicos Administrativos</strong></div>
+<div><strong>UNAM, ENES Juriquilla</strong></div>
+<br>
+<br>
+<br>
+<div><strong>
+  Este mensaje de correo es generado automáticamente por el sistema por lo que no es necesario responderlo. Los mensajes enviados a esta dirección  de correo no serán respondidos. Dudas respecto a la solicitud, favor de acudir a la dirección de correo electrónico {{ current_user.pgus_email }}
+</strong></div>
+

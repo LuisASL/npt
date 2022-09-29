@@ -1,0 +1,238 @@
+<head>
+<style>
+table, th, td {
+  border-collapse: collapse;
+}
+
+@page {
+    size: letter landscape;
+    margin: 2cm;
+}
+
+.tablem .tbodym .trm .tdm {
+  font-size: 5px;
+}
+       
+/***Always insert a page break before the element***/
+       .pb_before {
+           page-break-before: always !important;
+       }
+
+/***Always insert a page break after the element***/
+       .pb_after {
+           page-break-after: always !important;
+       }
+
+/***Avoid page break before the element (if possible)***/
+       .pb_before_avoid {
+           page-break-before: avoid !important;
+       }
+
+/***Avoid page break after the element (if possible)***/
+       .pb_after_avoid {
+           page-break-after: avoid !important;
+       }
+
+/* Avoid page break inside the element (if possible) */
+       .pbi_avoid {
+           page-break-inside: avoid !important;
+       }
+
+#background{
+    position:absolute;
+    z-index:0;
+    background:white;
+    display:block;
+    min-height:50%; 
+    min-width:50%;
+    color:yellow;
+}
+
+#content{
+    position:absolute;
+    z-index:1;
+}
+
+#bg-text
+{
+    color:lightgrey;
+    font-size:120px;
+    transform:rotate(300deg);
+    -webkit-transform:rotate(300deg);
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  color:lightgrey;
+  font-size:100px;  
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  color:lightgrey;
+  font-size:100px;  
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  color:lightgrey;
+  font-size:100px;  
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  color:lightgrey;
+  font-size:100px;  
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  color:lightgrey;
+  font-size:100px;
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+  <table style="width: 100%;">
+    <table style="width: 100%;" cellspacing="0" cellpadding="4">
+    <tbody>
+    <tr valign="top">
+    <td style="width: 20%;" rowspan="2">
+    <p class="western" lang="es-ES" style="text-align: center;" align="left"><img src="/var/www/NuevoIngreso/app/static/imgs/escudo_unam.png" width="100%" height="220" /></p>
+    </td>
+    <td style="width: 60%;">
+    <p class="western" lang="es-ES" style="text-align: center;"><img src="/var/www/NuevoIngreso/app/static/imgs/nombre_unam.png" width="100%" height="120" /></p>
+    <br>
+    <center>
+    <b><span style="font-size: x-large;">H. CONSEJO TÉCNICO</span></b>
+    </center>
+    </td>
+    <td style="width: 20%;" rowspan="2">
+    <p class="western" lang="es-ES" style="text-align: center;"><img src="/var/www/NuevoIngreso/app/static/imgs/escudo_enes_plan.png" width="115%" height="220" /></p>
+    </td>
+    </tr>
+    </tbody>
+  </table>
+
+ 
+
+<p style="text-align: right;font-size: large;">
+<b>
+    {{ solicitud.ctlc_pct_solicitud_sesion_oficio }} <br>
+    ASUNTO</b>: Dictamen {{ solicitud.tipo_lic_com() }}
+</p>
+
+<p style="text-align: left;font-size: large;"><b>
+Dr. Raúl Paredes Guerrero<br>
+Presidente del H. C.T.<br>
+ENES Juriquilla, UNAM<br>
+P r e s e n t e
+</b></p>
+
+<p>
+    Le comunico que, en la {{ solicitud.ctlc_pct_solicitud_sesion }} de este Cuerpo Colegiado, celebrada el {{ solicitud.fecha_valida(solicitud.ctlc_pct_solicitud_sesion_fecha) }}, se dictamino como {{ solicitud.respuesta(solicitud.ctlc_pct_respuesta)|lower}} la solicitud de {{ solicitud.tipo_lic_com()|lower }}:<br>
+    <br>
+
+<table class="table tablem" style="width: 100%;" border="2" cellspacing="0" cellpadding="3">
+    <thead>
+        <tr>
+            <th style="background: #002B7A; height: 25px;" bgcolor="#002B7A"><span style="color: #bb8800;" style="font-size: small;">Académico</span></th>
+            <th style="background: #002B7A; height: 25px;" bgcolor="#002B7A"><span style="color: #bb8800;" style="font-size: small;">Actividad a realizar</span></th>
+            <th style="background: #002B7A; height: 25px;" bgcolor="#002B7A"><span style="color: #bb8800;" style="font-size: small;">Lugar</span></th>
+            <th style="background: #002B7A; height: 25px;" bgcolor="#002B7A"><span style="color: #bb8800;" style="font-size: small;">Período</span></th>
+            <th style="background: #002B7A; height: 25px;" bgcolor="#002B7A"><span style="color: #bb8800;" style="font-size: small;">Apoyo económico</span></th>
+            <th style="background: #002B7A; height: 25px;" bgcolor="#002B7A"><span style="color: #bb8800;" style="font-size: small;">Entrega</span></th>
+            <th style="background: #002B7A; height: 25px;" bgcolor="#002B7A"><span style="color: #bb8800;" style="font-size: small;">Art.</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="height: 17px;">
+            <td style="width: 15%; height: 17px;">
+                <p id="p_1" class="western" align="center" style="font-size: small;">{{ profesor.nombre_cepr() }}</p>
+            </td>
+            <td style="width: 30%; height: 17px;">
+                <p id="p_1" class="western" align="center" style="font-size: small;">
+                    {% if solicitud.ctlc_presentacion == "Organización" %}
+                    Participar como organizador en {{ solicitud.ctlc_tipoevento }}
+                    {% else %}
+                    Participar en {{ solicitud.ctlc_tipoevento }}, trabajo  <b> {{ solicitud.ctlc_titulo }} </b>
+                    {% endif %}
+                </p>
+            </td>
+            <td style="width: 30%; height: 17px;">
+                <p id="p_1" class="western" align="center" style="font-size: small;">{{solicitud.ctlc_dependencia}} de {{solicitud.ctlc_institucion}} en {{solicitud.ctlc_estado| replace("_", " ")}}, {{solicitud.ctlc_pais}}</p>
+            </td>
+            <td style="width: 20%; height: 17px;">
+                <p id="p_1" class="western" align="center" style="font-size: small;">{{solicitud.fecha_valida(solicitud.ctlc_periodoinicio)}} al {{solicitud.fecha_valida(solicitud.ctlc_periodofinal)}}</p>
+            </td>
+            <td style="width: 20%; height: 17px;">
+                <p id="p_1" class="western" align="center" style="font-size: small;">
+                    {% if solicitud.ctlc_origen_apoyo == "No se requiere apoyo" %}
+                        No se requiere apoyo
+                    {% elif solicitud.ctlc_origen_apoyo == "ENES Juriquilla" %}
+                        {{solicitud.ctlc_origen_apoyo}}, {{ solicitud.ctlc_catidad_apoyo }} M.N.
+                    {% elif solicitud.ctlc_origen_apoyo == "CONACYT" or solicitud.ctlc_origen_apoyo == "PAPIIT" or solicitud.ctlc_origen_apoyo == "PAPIME" %}
+                        {{solicitud.ctlc_origen_apoyo}}, Proyecto {{solicitud.ctlc_numero_proyecto}}, {{ solicitud.ctlc_catidad_apoyo }} M.N.
+                    {% else %}
+                        {{solicitud.ctlc_origen_apoyo}}, {{ solicitud.ctlc_catidad_apoyo }} M.N.
+                    {% endif %}
+                </p>
+            </td>
+            <td style="width: 10%; height: 17px;">
+                <p id="p_1" class="western" align="center" style="font-size: small;">{{solicitud.fecha_valida(solicitud.ctlc_fcreacion)}}</p>
+            </td>
+            <td style="width: 3%; height: 17px;">
+                <p id="p_1" class="western" align="center" style="font-size: small;">{{ solicitud.articulo()[0] }} {{ solicitud.articulo()[1] }}</p>
+            </td>
+        </tr>
+
+
+    </tbody>
+</table>
+    
+    <br>
+    Asimismo, se solicita que a su regreso haga entrega de un informe con los datos generales de la salida, indicando un aproximado de cuántos hombres y cuántas mujeres asistieron, si fuera el caso, el reconocimiento o probatorio correspondiente y las evidencias, tales como fotografías. Una vez cumplido este requisito podrá solicitar una nueva licencia. La información proporcionada será utilizada para la Memoria Estadística y el Informe anual de la ENES Juriquilla. <br>
+    <br>
+    
+    {% if solicitud.ctlc_pct_respuesta_observaciones %}
+    <i> {{ solicitud.ctlc_pct_respuesta_observaciones }}</i>.<br>
+    <br>
+    {% endif %}
+
+    Sin otro particular, aprovecho esta ocasión para saludarle
+</p> 
+
+
+Atentamente <br>
+"POR MI RAZA HABLARÁ EL ESPÍRITU"<br>
+Juriquilla Querétaro, a {{ solicitud.fecha_valida(fecha_obj) }} <br>
+EL SECRETARIO<br>
+
+<img src="{{ qrcode((mensaje_firma), error_correction='H')}}", width="150" height="150">
+<br>
+<div><strong>DR. JESÚS MANUEL DORADOR GONZÁLEZ</strong></div>
